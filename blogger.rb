@@ -54,7 +54,7 @@ title = "Hacker News stories for #{Time.now.strftime("%l %p on %A %b %d, %Y").st
 
 params = YAML::load(File.open("#{ENV['HOME']}/.blogger"))
 
-account = Blogger::Account.new(params["username"],params["password"])
+account = Blogger::Account.new(URI.escape(params["username"],"@+"),URI.escape(params["password"], "@+"))
 blogid = params["blogid"]
 userid = params["userid"]
 
